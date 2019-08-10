@@ -1,8 +1,3 @@
-// firebase, moment.js
-// display the next arrival times and minutes-away for all trains
-// add user inputs into array and display them in table
-// push items to firebase
-
 $(document).on('ready', function() {
 
     var firebaseConfig = {
@@ -17,80 +12,72 @@ $(document).on('ready', function() {
 
     firebase.initializeApp(firebaseConfig);
 
-    // var database = firebase.database();
-
-    var trains = {
-        CCE: {
-            name: 'Choo Choo Express',
-            dest: 'Stockholm',
-            freq: 30,
-            start: "06:00"
-        },
-        CCT: {
-            name: 'Chugga Chugga Train',
-            dest: 'Oslo',
-            freq: 45,
-            start: "05:45"
-        },
-        B: {
-            name: 'Bob',
-            dest: 'Gothenburg',
-            freq: 1576800,
-            start: "20:00"
-        },
-        TS: {
-            name: 'Track Scorcher',
-            dest: 'Copenhagen',
-            freq: 20,
-            start: "04:30"
-        }
-    };
-
-    var tArray = [];
+    var database = firebase.database();
 
     var start = "";
     var train = "";
-    var d = "";
+    var dest = "";
+    var freq = "";
     var nextArrival;
     var minutesToHere;
+    var date;
 
-    function tAdd() {
-
-        for (var i = 0; i < tArray.length; i++) {
-
-            train = tArray[i].name;
-            start = tArray[i].start;
-            d = tArray[i].dest;
-            var firstTime = moment(start, 'HH:mm').subtract(1, 'years');
-            var difference = moment().diff(moment(firstTime), 'minutes');
-            var frequency = tArray[i].freq;
-            var rem = difference % frequency;
-            minutesToHere = parseInt(frequency - rem);
-            nextArrival = moment().add(minutesToHere, 'minutes').format('HH:mm');
-            console.log(nextArrival);
-
-            $('.train').text(train);
-            $('.dest').text(d);
-            $('.freq').text(frequency);
-            $('.next').text(nextArrival);
-            $('.min-away').text(minutesToHere);
-
-        }
-
+    function update() {
+        date = moment(new Date());
+        $('h2').text(date.format('HH:mm:ss'));
     }
 
-    tAdd();
+    update();
+    setInterval(update, 1000);
 
-    // database.ref().set({
-    //     arrivalTime: nextArrival,
-    //     minutesAway: minutesToHere
-    // });
+    $('#add-train').on('click', function(event) {
 
-    // database.ref().on('value', function(snapshot) {
-    //     nextArrival = snapshot.val().arrivalTime;
-    //     minutesToHere = parseInt(snapshot.val().minutesAway);
-    // }, function(errorObject) {
-    //     console.log("The read failed: " + errorObject.code);
-    // });
+        event.preventDefault();
+
+        var trainI = $('#train-input').val().trim();
+        var destI = $('#dest-input').val().trim();
+        var firstI = $('#first-input').val().trim();
+        var freqI = $('#freq-input').val().trim();
+
+        var newTrain = {
+            name: trainI,
+            destination: destI,
+            firstTime: firstI,
+            frequency: freqI
+        };
+
+        database.ref().push(newTrain);
+
+        $('#train-input').val('');
+        $('#dest-input').val('');
+        $('#first-input').val('');
+        $('#freq-input').val('');
+
+    });
+
+    database.ref().on('child_added', function(snapshot) {
+
+        train = snapshot.val().name;
+        dest = snapshot.val().destination;
+        start = snapshot.val().firstTime;
+        freq = snapshot.val().frequency;
+        var difference = moment().diff(start, 'minutes');
+        var rem = difference % freq;
+        minutesToHere = freq - rem;
+        nextArrival = moment().add(minutesToHere).format('HH:mm');
+
+        var newRow = $("<tr>").append(
+            $("<td>").text(train),
+            $("<td>").text(dest),
+            $("<td>").text(freq),
+            $("<td>").text(nextArrival),
+            $("<td>").text(minutesToHere)
+        );
+
+        $('.t-list > tbody').append(newRow);
+
+    }, function(errorObject) {
+        console.log("The read failed: " + errorObject.code);
+    });
 
 });
