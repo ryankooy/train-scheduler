@@ -1,3 +1,10 @@
+// firebase, moment.js
+// display the next arrival times and minutes-away for all trains
+
+
+
+
+
 $(document).on('ready', function() {
 
     var firebaseConfig = {
@@ -14,12 +21,35 @@ $(document).on('ready', function() {
 
     var database = firebase.database();
 
+    var trains = [{
+        CCE: {
+            name: 'Choo Choo Express',
+            dest: 'Stockholm',
+            freq: 30,
+            start: "06:00"
+        },
+        CCT: {
+            name: 'Chugga Chugga Train',
+            dest: 'Oslo',
+            freq: 45,
+            start: "05:45"
+        },
+        B: {
+            name: 'Bob',
+            dest: 'Gothenburg',
+            freq: 1576800,
+            start: "20:00"
+        },
+        TS: {
+            name: 'Track Scorcher',
+            dest: 'Copenhagen',
+            freq: 20,
+            start: "04:30"
+        }
+    }];
+
     var now = moment();
     var start = "00:00";
-    var startCCE = "06:00";
-    var startCCT = "05:45";
-    var startB = "20:00";
-    var startTS = "04:30";
     var firstTime = moment(start, 'HH:mm').subtract(1, 'years');
     var diff = moment().diff(moment(firstTime), 'minutes');
     var freq = 0;
@@ -27,6 +57,10 @@ $(document).on('ready', function() {
     var minutesToHere = freq - rem;
     var nextArrival = moment().add(minutesToHere, 'minutes');
     console.log(nextArrival);
+
+    for (var i = 0; i < trains.length; i++( {
+        
+    }
 
     database.ref().set({
         arrivalTime: nextArrival,
