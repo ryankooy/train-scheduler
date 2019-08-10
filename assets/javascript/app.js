@@ -1,9 +1,7 @@
 // firebase, moment.js
 // display the next arrival times and minutes-away for all trains
-
-
-
-
+// add user inputs into array and display them in table
+// push items to firebase
 
 $(document).on('ready', function() {
 
@@ -19,9 +17,9 @@ $(document).on('ready', function() {
 
     firebase.initializeApp(firebaseConfig);
 
-    var database = firebase.database();
+    // var database = firebase.database();
 
-    var trains = [{
+    var trains = {
         CCE: {
             name: 'Choo Choo Express',
             dest: 'Stockholm',
@@ -46,32 +44,53 @@ $(document).on('ready', function() {
             freq: 20,
             start: "04:30"
         }
-    }];
+    };
 
-    var now = moment();
-    var start = "00:00";
-    var firstTime = moment(start, 'HH:mm').subtract(1, 'years');
-    var diff = moment().diff(moment(firstTime), 'minutes');
-    var freq = 0;
-    var rem = diff % freq;
-    var minutesToHere = freq - rem;
-    var nextArrival = moment().add(minutesToHere, 'minutes');
-    console.log(nextArrival);
+    var tArray = [];
 
-    for (var i = 0; i < trains.length; i++( {
-        
+    var start = "";
+    var train = "";
+    var d = "";
+    var nextArrival;
+    var minutesToHere;
+
+    function tAdd() {
+
+        for (var i = 0; i < tArray.length; i++) {
+
+            train = tArray[i].name;
+            start = tArray[i].start;
+            d = tArray[i].dest;
+            var firstTime = moment(start, 'HH:mm').subtract(1, 'years');
+            var difference = moment().diff(moment(firstTime), 'minutes');
+            var frequency = tArray[i].freq;
+            var rem = difference % frequency;
+            minutesToHere = parseInt(frequency - rem);
+            nextArrival = moment().add(minutesToHere, 'minutes').format('HH:mm');
+            console.log(nextArrival);
+
+            $('.train').text(train);
+            $('.dest').text(d);
+            $('.freq').text(frequency);
+            $('.next').text(nextArrival);
+            $('.min-away').text(minutesToHere);
+
+        }
+
     }
 
-    database.ref().set({
-        arrivalTime: nextArrival,
-        minutesAway: minutesToHere
-    });
+    tAdd();
 
-    database.ref().on('value', function(snapshot) {
-        nextArrival = snapshot.val().arrivalTime;
-        minutesToHere = parseInt(snapshot.val().minutesAway);
-    }, function(errorObject) {
-        console.log("The read failed: " + errorObject.code);
-    });
+    // database.ref().set({
+    //     arrivalTime: nextArrival,
+    //     minutesAway: minutesToHere
+    // });
+
+    // database.ref().on('value', function(snapshot) {
+    //     nextArrival = snapshot.val().arrivalTime;
+    //     minutesToHere = parseInt(snapshot.val().minutesAway);
+    // }, function(errorObject) {
+    //     console.log("The read failed: " + errorObject.code);
+    // });
 
 });
