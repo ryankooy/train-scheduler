@@ -18,8 +18,6 @@ $(document).on('ready', function() {
     var train = "";
     var dest = "";
     var freq = "";
-    var nextArrival;
-    var minutesToHere;
     var date;
 
     function update() {
@@ -27,6 +25,7 @@ $(document).on('ready', function() {
         $('h2').text(date.format('HH:mm:ss'));
     }
 
+    $('h2').addClass('time');
     update();
     setInterval(update, 1000);
 
@@ -61,17 +60,18 @@ $(document).on('ready', function() {
         dest = snapshot.val().destination;
         start = snapshot.val().firstTime;
         freq = snapshot.val().frequency;
-        var difference = moment().diff(start, 'minutes');
+        var startConv = moment(start, 'HH:mm').subtract(1, 'years');
+        var difference = moment().diff(moment(startConv), 'minutes');
         var rem = difference % freq;
-        minutesToHere = freq - rem;
-        nextArrival = moment().add(minutesToHere).format('HH:mm');
+        var minutesToHere = freq - rem;
+        var nextArrival = moment().add(minutesToHere, 'minutes').format('HH:mm');
 
-        var newRow = $("<tr>").append(
-            $("<td>").text(train),
-            $("<td>").text(dest),
-            $("<td>").text(freq),
-            $("<td>").text(nextArrival),
-            $("<td>").text(minutesToHere)
+        var newRow = $('<tr>').append(
+            $('<td>').text(train),
+            $('<td>').text(dest),
+            $('<td>').text(freq),
+            $('<td>').text(nextArrival),
+            $('<td>').text(minutesToHere)
         );
 
         $('.t-list > tbody').append(newRow);

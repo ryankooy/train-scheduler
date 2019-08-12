@@ -6,15 +6,16 @@
         <title>Train Scheduler</title>
         <link rel="stylesheet" type="text/css" href="assets/css/style.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Aldrich|Black+Ops+One|Electrolize|Share+Tech+Mono&display=swap" rel="stylesheet">
         <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
         <script src="https://www.gstatic.com/firebasejs/6.3.5/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-database.js"></script>
         <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
     </head>
     <body>
-        <h1>Train's A-Comin'</h1>
+        <h1 id="title">Train's A-Comin'</h1>
         <h2></h2>
-        <section class="container">
+        <section class="container" id="t-cont">
             <table class="table table-hover t-list">
                 <thead>
                     <tr>
@@ -29,7 +30,7 @@
             </table>
         </section>
         <section class="container">
-            <form role="form" class="form">
+            <form role="form" class="form labels">
                 <label>Train Name</label>
                 <div class="form-group row">
                     <input class="form-control" id="train-input" type="text">

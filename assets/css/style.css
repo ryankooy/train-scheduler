@@ -1,7 +1,19 @@
-h1, h2 {
+#title, .time {
     text-align: center;
 }
 
-.form, .t-list {
-    width: 100%;
+#title {
+    font-family: 'Black Ops One', cursive;
 }
+
+.time, .t-list, .labels {
+    font-family: 'Share Tech Mono', monospace;
+}
+
+#t-cont {
+    border: 3 solid red;
+}
+
+/* font-family: 'Share Tech Mono', monospace;
+font-family: 'Black Ops One', cursive;
+font-family: 'Electrolize', sans-serif; */
