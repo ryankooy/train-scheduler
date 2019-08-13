@@ -12,7 +12,7 @@
         <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-database.js"></script>
         <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
     </head>
-    <body>
+    <body class="all">
         <h1 id="title">Train's A-Comin'</h1>
         <h2></h2>
         <section class="container" id="t-cont">
@@ -29,23 +29,31 @@
                 <tbody></tbody>
             </table>
         </section>
-        <section class="container">
-            <form role="form" class="form labels">
-                <label>Train Name</label>
+        <section class="container f">
+            <form class="labels">
                 <div class="form-group row">
-                    <input class="form-control" id="train-input" type="text">
+                    <label class="col-sm-2 col-form-label l">Train Name</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="train-input">
+                    </div>
                 </div>
-                <label>Destination</label>
                 <div class="form-group row">
-                    <input class="form-control" id="dest-input" type="text">
+                    <label class="col-sm-2 col-form-label l">Destination</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="dest-input">
+                    </div>
                 </div>
-                <label>First Train Time (Military)</label>
                 <div class="form-group row">
-                    <input class="form-control" id="first-input" type="number">
+                    <label class="col-sm-2 col-form-label l">First Train Time (Military)</label>
+                    <div class="col-sm-10">
+                        <input type="number" class="form-control" id="first-input">
+                    </div>
                 </div>
-                <label>Frequency</label>
                 <div class="form-group row">
-                    <input class="form-control" id="freq-input" type="number">
+                    <label class="col-sm-2 col-form-label l">Frequency</label>
+                    <div class="col-sm-10">
+                        <input type="number" class="form-control" id="freq-input">
+                    </div>
                 </div>
                 <button class="btn btn-default" id="add-train" type="submit">Submit</button>
             </form>

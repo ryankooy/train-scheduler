@@ -1,17 +1,49 @@
+.all {
+    background-color: darkred;
+    color: white;
+    font-size: 20px;
+}
+
 #title, .time {
     text-align: center;
 }
 
 #title {
+    color: tomato;
+    margin-top: 20px;
+    font-size: 60px;
     font-family: 'Black Ops One', cursive;
+}
+
+.time {
+    font-size: 45px;
+    margin-bottom: 20px;
 }
 
 .time, .t-list, .labels {
     font-family: 'Share Tech Mono', monospace;
 }
 
-#t-cont {
-    border: 3 solid red;
+.labels {
+    margin-top: 20px;
+    font-size: 16px;
+    display: inline-block;
+    width: 750px;
+}
+
+.f {
+    text-align: center;
+}
+
+#add-train {
+    background-color: tomato;
+    border-color: white;
+    color: black;
+}
+
+.l {
+    text-align: right;
+    color: tomato;
 }
 
 /* font-family: 'Share Tech Mono', monospace;
