@@ -1,7 +1,8 @@
 .all {
+    background-image: url("../images/2647265848_5cd2e50b4a_b.jpg");
     background-color: black;
-    color: white;
-    font-size: 20px;
+    color:rgba(0, 0, 0, 0.8);
+    font-size: 16px;
 }
 
 #title, .time {
@@ -9,14 +10,14 @@
 }
 
 #title {
-    color: tomato;
+    color: rgb(92, 6, 6);
     margin-top: 20px;
     font-size: 60px;
     font-family: 'Black Ops One', cursive;
 }
 
 .time {
-    font-size: 45px;
+    font-size: 40px;
     margin-bottom: 20px;
 }
 
@@ -29,25 +30,23 @@
 }
 
 #add-train {
-    background-color: tomato;
     border-color: white;
-    color: black;
+    color: white;
+    background-color: rgb(92, 6, 6);
 }
 
 #add-train:hover {
     color: white;
     background-color: black;
-    border-color: tomato;
 }
 
 .l {
     text-align: right;
-    color: tomato;
     width: 600px;
 }
 
 .labels {
-    background-color: black;
+    color: rgb(92, 6, 6);
     border: 1px solid white;
     padding: 20px 10px 10px 10px;
     margin-bottom: 20px;
@@ -58,7 +57,6 @@
 }
 
 #t-cont {
-    background-color: darkred;
     border: 1px solid white;
     padding: 30px 30px 0px 30px;
 }
@@ -70,8 +68,8 @@
 .x-out {
     display: inline-block;
     border: none;
-    background-color: darkred;
-    color: tomato;
+    color: rgb(92, 6, 6);
+    background-color: transparent;
 }
 
 .x-out:hover {
