@@ -68,7 +68,14 @@
 }
 
 .x-out {
-    padding: 0 auto;
+    display: inline-block;
+    border: none;
+    background-color: darkred;
+    color: tomato;
+}
+
+.x-out:hover {
+    background-color: black;
 }
 
 /* font-family: 'Share Tech Mono', monospace;

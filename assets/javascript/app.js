@@ -73,18 +73,20 @@ $(document).on('ready', function() {
             $('<td>').text(dest),
             $('<td>').text(freq),
             $('<td>').text(nextArrival),
-            $('<td>').text(minutesToHere)
+            $('<td>').text(minutesToHere),
+            $('<td>').html(xButton)
         );
+        newRow.attr('id', 'r');
 
         $('.t-list > tbody').append(newRow);
-        newRow.append(xButton);
 
+        $('.x-out').on('click', function() {
+            var r = $(this).parent().parent();
+            r.remove();
+        });
+        
     }, function(errorObject) {
         console.log("The read failed: " + errorObject.code);
-    });
-
-    $('.x-out').on('click', function() {
-        $(this).remove('<tr>');
     });
 
 });
