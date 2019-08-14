@@ -65,6 +65,8 @@ $(document).on('ready', function() {
         var rem = difference % freq;
         var minutesToHere = freq - rem;
         var nextArrival = moment().add(minutesToHere, 'minutes').format('HH:mm');
+        var xButton = $('<button>').addClass('x-out');
+        xButton.text('x');
 
         var newRow = $('<tr>').append(
             $('<td>').text(train),
@@ -75,9 +77,14 @@ $(document).on('ready', function() {
         );
 
         $('.t-list > tbody').append(newRow);
+        newRow.append(xButton);
 
     }, function(errorObject) {
         console.log("The read failed: " + errorObject.code);
+    });
+
+    $('.x-out').on('click', function() {
+        $(this).remove('<tr>');
     });
 
 });

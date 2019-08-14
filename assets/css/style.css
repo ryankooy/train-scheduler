@@ -1,5 +1,5 @@
 .all {
-    background-color: darkred;
+    background-color: black;
     color: white;
     font-size: 20px;
 }
@@ -24,13 +24,6 @@
     font-family: 'Share Tech Mono', monospace;
 }
 
-.labels {
-    margin-top: 20px;
-    font-size: 16px;
-    display: inline-block;
-    width: 750px;
-}
-
 .f {
     text-align: center;
 }
@@ -41,9 +34,41 @@
     color: black;
 }
 
+#add-train:hover {
+    color: white;
+    background-color: black;
+    border-color: tomato;
+}
+
 .l {
     text-align: right;
     color: tomato;
+    width: 600px;
+}
+
+.labels {
+    background-color: black;
+    border: 1px solid white;
+    padding: 20px 10px 10px 10px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    font-size: 16px;
+    display: inline-block;
+    width: 750px;
+}
+
+#t-cont {
+    background-color: darkred;
+    border: 1px solid white;
+    padding: 30px 30px 0px 30px;
+}
+
+.col-sm-5 {
+    text-align: right;
+}
+
+.x-out {
+    padding: 0 auto;
 }
 
 /* font-family: 'Share Tech Mono', monospace;
