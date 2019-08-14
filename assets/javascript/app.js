@@ -29,6 +29,12 @@ $(document).on('ready', function() {
     update();
     setInterval(update, 1000);
 
+    function refresh() {
+        display(snapshot);
+    }
+
+    setTimeout(function() { refresh(); }, 60 * 1000);
+
     $('#add-train').on('click', function(event) {
 
         event.preventDefault();
@@ -54,7 +60,7 @@ $(document).on('ready', function() {
 
     });
 
-    database.ref().on('child_added', function(snapshot) {
+    database.ref().on('child_added', function (snapshot) {
 
         train = snapshot.val().name;
         dest = snapshot.val().destination;
