@@ -78,6 +78,10 @@
     color: white;
 }
 
-/* font-family: 'Share Tech Mono', monospace;
-font-family: 'Black Ops One', cursive;
-font-family: 'Electrolize', sans-serif; */
+@media screen and (max-width: 620px) {
+
+    .labels, #-cont, .t-list {
+        width: 100%;
+    }
+
+}
