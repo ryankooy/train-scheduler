@@ -30,7 +30,7 @@ $(document).on('ready', function() {
     setInterval(update, 1000);
 
     function refresh() {
-        display(snapshot);
+        location.reload();
     }
 
     setTimeout(function() { refresh(); }, 60 * 1000);
