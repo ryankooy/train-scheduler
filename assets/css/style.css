@@ -78,6 +78,13 @@
     color: white;
 }
 
+#update {
+    color: rgb(92, 6, 6);
+    font-size: 13px;
+    text-align: center;
+    font-family: 'Share Tech Mono', monospace;
+}
+
 @media screen and (max-width: 730px) {
 
     .all {
