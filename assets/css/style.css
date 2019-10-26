@@ -1,6 +1,6 @@
 .all {
-    background-image: url("../images/2647265848_5cd2e50b4a_b.jpg");
-    background-color: black;
+    background-color: orange;
+    /* background-image: url("../images/2647265848_5cd2e50b4a_b.jpg"); */
     color: rgba(0, 0, 0, 0.85);
     font-size: 18px;
 }
@@ -60,6 +60,7 @@
 #t-cont {
     border: 2px dashed rgb(92, 6, 6);
     padding: 30px 30px 0px 30px;
+    width: 85%;
 }
 
 .col-sm-5 {
